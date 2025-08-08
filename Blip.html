@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📄 Relatório Projeto Blip</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Header Centralizado */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header h2 {
+            color: #5a6c7d;
+            font-size: 1.4em;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        /* Informações do Projeto */
+        .project-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+        }
+
+        .project-info h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .project-info p {
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        .project-info strong {
+            color: #2c3e50;
+        }
+
+        /* Seções do conteúdo */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .section h3 {
+            color: #495057;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .section h4 {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+
+        .section ul {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        /* Timeline melhorada */
+        .timeline-container {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .timeline-table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 12px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .timeline-table td {
+            padding: 15px 10px;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+            color: #495057;
+            vertical-align: middle;
+            font-size: 0.9em;
+        }
+
+        .timeline-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .timeline-table tr:hover {
+            background-color: #e3f2fd;
+            transition: background-color 0.3s ease;
+        }
+
+        .status-completed {
+            color: #28a745;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        .status-progress {
+            color: #fd7e14;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        .status-delayed {
+            color: #dc3545;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        /* Blockquotes melhorados */
+        blockquote {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 5px solid #2196f3;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            font-style: italic;
+            color: #1565c0;
+        }
+
+        .alert {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 5px solid #ffc107;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            color: #856404;
+        }
+
+        .critical {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border-left: 5px solid #dc3545;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            color: #721c24;
+        }
+
+        .success {
+            background: linear-gradient(135deg, #d1edff 0%, #a8dadc 100%);
+            border-left: 5px solid #28a745;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            color: #155724;
+        }
+
+        /* Estilo para unidades em duas colunas */
+        .units-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .units-column {
+            flex: 1;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .units-column h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+
+        .units-column ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+
+        .units-column li {
+            margin-bottom: 6px;
+            color: #495057;
+            line-height: 1.4;
+        }
+
+        .contact-modern {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-photo img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 200px;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .contact-info p {
+            margin: 6px 0;
+            color: #343a40;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-qr img {
+            width: 150px;
+            height: 150px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsividade para contato */
+        @media (max-width: 600px) {
+            .contact-wrapper {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .contact-info {
+                padding-left: 0;
+                text-align: center;
+            }
+
+            .contact-photo img,
+            .contact-qr img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header h2 {
+                font-size: 1.2em;
+            }
+
+            .timeline-table {
+                font-size: 0.8em;
+            }
+
+            .units-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Centralizado -->
+        <div class="header">
+            <h1>Projeto Blip</h1>
+            <h2>🤖 Assistente Virtual para Atendimento ao Cliente da Tron</h2>
+        </div>
+
+        <!-- Informações Gerais -->
+        <div class="project-info">
+            <h3>📋 Informações Gerais do Projeto</h3>
+            <p><strong>Projeto:</strong> Assistente Virtual Tron - Plataforma Blip</p>
+            <p><strong>Responsável (Set/24 - Abr/25):</strong> Caroline Belohuby Rangel</p>
+            <p><strong>Responsável (Abr/25 - Atual):</strong> Thiago Chiarelotto</p>
+            <p><strong>Duração:</strong> 24 meses (Setembro 2024 - Setembro 2026)</p>
+            <p><strong>Investimento Total:</strong> R$ 143.760,00 (24x R$ 5.990,00)</p>
+            <p><strong>Parceiros:</strong> 
+                <img src="https://www.blip.ai/images/logo-blip.svg" alt="Blip" style="height: 20px; vertical-align: middle; margin: 0 10px;"> Curupira S.A (Blip), 
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOKciQWV5IHl6kQ6yYW_31-jbFWbXJNPei5g&s" alt="WhiteWall" style="height: 20px; vertical-align: middle; margin: 0 10px;"> WhiteWall (Implementação)
+            </p>
+        </div>
+
+        <!-- Imagem 1 - Assistente Virtual -->
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="https://github.com/thiagochiarelotto/projeto-aidbot-imagens/blob/main/Apresenta%C3%A7%C3%A3o%20Assistente%20Virtual%201.png?raw=true" alt="Assistente Virtual Tron" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+        </div>
+
+        <!-- Sucessos Alcançados -->
+        <div class="section">
+            <h2>🏆 Resultados Conquistados</h2>
+            <p>O projeto já demonstra <strong>resultados concretos e mensuráveis</strong>, transformando significativamente o atendimento ao cliente da Tron.</p>
+
+            <h3>✅ Sistema em Produção Estável</h3>
+            <p>Operando com <strong>excelência desde junho de 2025</strong>, o Assistente Virtual Tron processa milhares de interações mensais com alta eficiência.</p>
+
+            <h3>🤖 Automação Financeira Avançada</h3>
+            <ul>
+                <li><strong>Geração automática de 2ª via de boletos</strong> - instantânea via WhatsApp</li>
+                <li><strong>Emissão de 2ª via de Notas Fiscais</strong> - processo completamente automatizado</li>
+                <li><strong>Sistema de "Sinalizar Pagamento"</strong> - intenção de pagamento para liberação de produtos</li>
+            </ul>
+
+            <h3>🔗 Integração Total com Sistemas Internos</h3>
+            <h4>Integração com Movidesk:</h4>
+            <ul>
+                <li>Consulta automática de tickets abertos</li>
+                <li>Verificação de dados de clientes</li>
+                <li>Abertura inteligente de tickets de suporte</li>
+            </ul>
+
+            <h4>Integração com Tron Total:</h4>
+            <ul>
+                <li>Consulta em tempo real de títulos financeiros</li>
+                <li>Verificação de status do cliente (adimplente/inadimplente)</li>
+                <li>Liberações automatizadas de produtos (TGC/NFe/Cloud)</li>
+            </ul>
+
+            <div class="success">
+                <strong>📊 Métricas de Julho 2025 (Primeiro Mês Completo):</strong>
+                <ul style="margin-top: 15px;">
+                    <li><strong>1.504 tickets finalizados</strong> via atendimento integrado</li>
+                    <li><strong>1.201 contatos únicos</strong> atendidos pelo assistente</li>
+                    <li><strong>99,59% de taxa de interação</strong></li>
+                    <li><strong>84,94% de promotores</strong> na pesquisa CSAT</li>
+                    <li><strong>68% das demandas</strong> direcionadas para "Suporte a Produto"</li>
+                    <li><strong>40,7% das interações financeiras</strong> para emissão de boletos</li>
+                </ul>
+            </div>
+
+            <h3>📱 Como Utilizar o Assistente Virtual</h3>
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://wa.me/556240029090" target="_blank">
+                    <img src="https://github.com/thiagochiarelotto/projeto-aidbot-imagens/blob/main/Apresenta%C3%A7%C3%A3o%20Assistente%20Virtual%202.png?raw=true" alt="Conheça o Assistente Virtual" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); cursor: pointer; transition: transform 0.3s ease;">
+                </a>
+            </div>
+
+            <div style="text-align: center; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); padding: 25px; border-radius: 15px; margin: 30px 0;">
+                <h4 style="color: white; margin-bottom: 15px;">Acesse Agora o Assistente Virtual Tron</h4>
+                <p style="color: white; margin-bottom: 20px; font-size: 1.1em;"><strong>WhatsApp: (62) 4002-9090</strong></p>
+                <a href="https://wa.me/556240029090" target="_blank" style="display: inline-block; background: white; color: #25D366; padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                    💬 Iniciar Conversa
+                </a>
+            </div>
+        </div>
+        <div class="section">
+            <h2>🎯 O Problema</h2>
+            <p>A Tron enfrenta um desafio significativo em seu atendimento ao cliente, lidando com um <strong>volume massivo de solicitações</strong> que sobrecarrega a equipe e compromete a experiência do usuário.</p>
+
+            <h3>Cenário Crítico do Atendimento:</h3>
+            <ul>
+                <li><strong>Volume mensal:</strong> Aproximadamente <strong>7 a 8 mil tickets</strong> por mês</li>
+                <li><strong>Demanda financeira:</strong> <strong>2 a 3 mil tickets</strong> apenas de questões financeiras</li>
+                <li><strong>Canais dispersos:</strong> WhatsApp, telefone, e-mail e chat fragmentados</li>
+                <li><strong>Tempo de resposta elevado:</strong> Longas filas de espera</li>
+                <li><strong>Processos manuais:</strong> Repetição de tarefas básicas como envio de boletos</li>
+            </ul>
+
+            <h4>Impactos Identificados:</h4>
+            <ul>
+                <li><strong>Sobrecarga operacional</strong> da equipe de atendimento</li>
+                <li><strong>Experiência do cliente prejudicada</strong> por demora nas respostas</li>
+                <li><strong>Custos elevados</strong> com recursos humanos dedicados a tarefas repetitivas</li>
+                <li><strong>Inconsistência</strong> no padrão de atendimento entre diferentes canais</li>
+            </ul>
+        </div>
+
+        <!-- Objetivos do Projeto -->
+        <div class="section">
+            <h2>🚀 Objetivos do Projeto</h2>
+            <p>O <strong>Projeto Blip</strong> foi concebido para melhorar o atendimento da Tron através da implementação de um assistente virtual inteligente que centraliza, automatiza e otimiza todas as interações com clientes.</p>
+
+            <h3>Objetivo Principal</h3>
+            <p>Implementar uma <strong>plataforma de atendimento automatizado multicanal</strong> com foco em automação de processos financeiros e direcionamento inteligente de demandas.</p>
+            
+            <div class="alert">
+                <strong>⚠️ Observação:</strong> O escopo original previa integração com Instagram, site da Tron e sistema Nectar, porém essas integrações foram inviabilizadas durante o projeto devido a limitações técnicas identificadas no decorrer da implementação.
+            </div>
+
+            <h4>Benefícios Esperados:</h4>
+            <ul>
+                <li><strong>Automação de processos repetitivos</strong> (emissão de boletos, 2ª via de NF, etc.)</li>
+                <li><strong>Direcionamento inteligente</strong> por departamento e especialidade</li>
+                <li><strong>Redução significativa</strong> do tempo de resposta</li>
+                <li><strong>Padronização da jornada</strong> do cliente</li>
+                <li><strong>Integração total</strong> com sistemas internos (Movidesk, TronTotal)</li>
+            </ul>
+        </div>
+
+        <!-- Cronograma -->
+        <div class="timeline-container">
+            <h2>📊 Cronograma do Projeto</h2>
+            <table class="timeline-table">
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Período</th>
+                        <th>Status</th>
+                        <th>Principais Atividades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Contratação</strong></td>
+                        <td>30/09/2024</td>
+                        <td class="status-completed">✅ Concluída</td>
+                        <td>Assinatura do contrato e definição do escopo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase Inicial</strong></td>
+                        <td>Out/24 - Mar/25</td>
+                        <td class="status-delayed">❌ Atraso</td>
+                        <td>Período sem entregas concretas (193 dias parados)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retomada</strong></td>
+                        <td>09/04/2025</td>
+                        <td class="status-completed">✅ Concluída</td>
+                        <td>Novo kick-off, mudança de governança</td>
+                    </tr>
+                    <tr>
+                        <td><strong>V1.0 - Básico</strong></td>
+                        <td>Abr - Mai/25</td>
+                        <td class="status-completed">✅ Concluída</td>
+                        <td>Go Live 21/05/25 - Fluxos básicos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>V2.0 - Completo</strong></td>
+                        <td>Jun/25</td>
+                        <td class="status-completed">✅ Concluída</td>
+                        <td>Go Live 20/06/25 - Integrações e automações</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Suporte/Garantia</strong></td>
+                        <td>Jul - Ago/25</td>
+                        <td class="status-completed">✅ Concluída</td>
+                        <td>Período de suporte WhiteWall</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operação</strong></td>
+                        <td>Set/25 - Atual</td>
+                        <td class="status-progress">🔄 Andamento</td>
+                        <td>Sistema em produção total</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Entregas Realizadas -->
+        <div class="section">
+            <h2>🎁 Entregas Realizadas</h2>
+
+            <h3>✅ V1.0 - Funcionalidades Básicas (Maio 2025)</h3>
+            <ul>
+                <li><strong>Chatbot funcional</strong> com identificação de cliente</li>
+                <li><strong>Direcionamento inteligente</strong> para departamentos específicos:
+                    <ul>
+                        <li><strong>Financeiro:</strong> Negociação (atendimento humano)</li>
+                        <li><strong>Suporte ao Cliente:</strong> Implantação, Migração, Fale com a gente (atendimento humano)</li>
+                        <li><strong>Comercial:</strong> Informações sobre produtos e vendas (atendimento humano)</li>
+                    </ul>
+                </li>
+                <li><strong>Atendimento humano integrado</strong> via Blip Desk</li>
+                <li><strong>Canais ativos:</strong> WhatsApp e Widget do site</li>
+                <li><strong>Fluxos básicos</strong> de navegação e triagem</li>
+                <li><strong>Automação Financeira Completa:</strong>
+                    <ul>
+                        <li>Geração automática de 2ª via de boletos</li>
+                        <li>Emissão de 2ª via de Notas Fiscais</li>
+                        <li>Sistema de "Sinalizar Pagamento" (intenção de pagamento)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>✅ V2.0 - Funcionalidades Avançadas (Junho 2025)</h3>
+            <ul>
+                <li><strong>Sistema de Suporte Integrado:</strong>
+                    <ul>
+                        <li>Abertura automática de tickets no Movidesk</li>
+                        <li>Direcionamento por especialidade e unidade</li>
+                        <li>Consulta de tickets em aberto</li>
+                        <li>Histórico completo de interações</li>
+                    </ul>
+                </li>
+                <li><strong>Integrações Técnicas:</strong>
+                    <ul>
+                        <li>API Movidesk (sistema de tickets)</li>
+                        <li>Sistema de e-mail automatizado (MailerSend)</li>
+                        <li>Fluxos avançados de navegação e exceções</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="success">
+                <strong>📈 Resultados em Julho 2025:</strong>
+                <ul style="margin-top: 15px;">
+                    <li><strong>1.504 tickets finalizados</strong> via atendimento integrado</li>
+                    <li><strong>1.201 contatos únicos</strong> atendidos pelo bot</li>
+                    <li><strong>99,59% de taxa de interação</strong></li>
+                    <li><strong>84,94% de promotores</strong> na pesquisa CSAT</li>
+                    <li><strong>68% das demandas</strong> direcionadas para "Suporte a Produto"</li>
+                    <li><strong>40,7% das interações financeiras</strong> para emissão de boletos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dificuldades do Projeto -->
+        <div class="section">
+            <h2>⚠️ Dificuldades e Desafios Enfrentados</h2>
+
+            <h3>🔄 Problemas de Comunicação e Coordenação</h3>
+            <div class="critical">
+                <strong>Principais Desafios:</strong>
+                <ul style="margin-top: 15px;">
+                    <li><strong>Período de inatividade:</strong> 193 dias (Set/24 - Abr/25) sem entregas concretas, resultando em <strong>custo de R$ 35.940</strong> sem contrapartida</li>
+                    <li><strong>Comunicação informal:</strong> Dependência excessiva de WhatsApp e e-mails pontuais com os participantes do projeto</li>
+                    <li><strong>Falta de governança:</strong> Ausência de estrutura clara de prestação de contas</li>
+                    <li><strong>Divergências de escopo:</strong> Diferentes interpretações entre Tron, Blip e WhiteWall</li>
+                    <li><strong>Conflitos de agenda:</strong> Dificuldades recorrentes para alinhamentos</li>
+                </ul>
+            </div>
+
+            <h3>🛠️ Limitações Técnicas da Plataforma</h3>
+            <div class="alert">
+                <strong>Complexidade Operacional:</strong>
+                <ul style="margin-top: 15px;">
+                    <li><strong>Interface não intuitiva:</strong> A plataforma Blip possui alta complexidade para criação e manutenção de fluxos</li>
+                    <li><strong>Curva de aprendizado elevada:</strong> Necessidade de conhecimento técnico especializado</li>
+                    <li><strong>Dependência de terceiros:</strong> Manutenções futuras demandarão contratação da WhiteWall ou dedicação integral de desenvolvedores</li>
+                    <li><strong>Limitações de customização:</strong> Restrições da plataforma para cenários não previstos no escopo original</li>
+                    <li><strong>Integrações inviabilizadas:</strong> 
+                        <ul>
+                            <li><strong>Instagram e site:</strong> O marketing já utiliza uma ferramenta de IA para triagem de leads mais assertiva do que o Blip oferece atualmente</li>
+                            <li><strong>Sistema Nectar:</strong> A integração não foi prevista no escopo das versões V1 e V2 devido ao tempo necessário para colocar em produção</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <h3>❌ Entregas Não Concluídas</h3>
+            <ul>
+                <li><strong>Sistema de Mensagens Ativas:</strong> Dificuldades técnicas na implementação de campanhas automáticas</li>
+                <li><strong>Selo de Autenticidade WhatsApp:</strong> Processo de validação não finalizado com a Meta</li>
+                <li><strong>Treinamento Completo:</strong> Capacitação da equipe interna incompleta</li>
+            </ul>
+
+            <h3>🔧 Problemas Técnicos Iniciais (Resolvidos)</h3>
+            <p>Durante a fase de implementação e estabilização, foram identificados alguns problemas técnicos que posteriormente foram solucionados:</p>
+            <ul>
+                <li><strong>Usuários "travados" no fluxo:</strong> Casos de clientes presos em loops (corrigido nas versões posteriores)</li>
+                <li><strong>Instabilidades pontuais da plataforma:</strong> Períodos isolados de indisponibilidade (estabilizado)</li>
+                <li><strong>Direcionamentos incorretos:</strong> Clientes direcionados para filas erradas (ajustado na V2)</li>
+                <li><strong>Timeouts de API:</strong> Limitação de 30 segundos causando falhas (tratamento de exceções implementado)</li>
+            </ul>
+            
+            <div class="success">
+                <strong>✅ Status Atual:</strong> Todos os problemas técnicos recorrentes foram identificados e corrigidos durante o período de suporte. O sistema opera de forma estável desde agosto de 2025.
+            </div>
+        </div>
+
+        <!-- Custeio -->
+        <div class="section">
+            <h2>💰 Estrutura de Custeio</h2>
+            
+            <p>O investimento mensal de <strong>R$ 5.990,00</strong> será <strong>rateado entre todas as unidades</strong> da Tron, proporcionalmente ao benefício obtido com o sistema.</p>
+
+            <div class="units-container">
+                <div class="units-column">
+                    <h4><strong>Unidades Próprias (5):</strong></h4>
+                    <ul>
+                        <li>Goiânia (Matriz)</li>
+                        <li>Anápolis</li>
+                        <li>Campo Grande</li>
+                        <li>Belém</li>
+                        <li>Cuiabá</li>
+                    </ul>
+                </div>
+
+                <div class="units-column">
+                    <h4><strong>Unidades Terceiros (2):</strong></h4>
+                    <ul>
+                        <li>Rio Verde</li>
+                        <li>Brasília</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Cálculo de Rateio Proposto</h3>
+            <p><strong>Custo por unidade:</strong> R$ 5.990 ÷ 7 unidades = <strong>R$ 855,71/mês por unidade</strong></p>
+            
+            <blockquote>
+                <strong>Justificativa:</strong> Todas as unidades se beneficiam do atendimento centralizado, redução de custos operacionais e melhoria na experiência do cliente, justificando o rateio equitativo.
+            </blockquote>
+        </div>
+
+        <!-- Conclusões e Próximos Passos -->
+        <div class="section">
+            <h2>📝 Conclusões e Próximos Passos</h2>
+
+            <h3>🔮 Recomendações para o Futuro</h3>
+            <ul>
+                <li><strong>Capacitação interna:</strong> Investir em treinamento técnico da equipe para reduzir dependência de terceiros</li>
+                <li><strong>Monitoramento contínuo:</strong> Implementar rotinas de acompanhamento de métricas e performance</li>
+                <li><strong>Evolução gradual:</strong> Expansão cautelosa para novos fluxos e funcionalidades</li>
+                <li><strong>Backup de conhecimento:</strong> Documentação completa de todos os processos e integrações</li>
+            </ul>
+
+            <div class="success">
+                <strong>💡 Lição Aprendida:</strong> Apesar das dificuldades iniciais, o projeto demonstrou que a automação inteligente do atendimento é não apenas viável, mas essencial para o crescimento sustentável da Tron. A chave está na gestão rigorosa do projeto e na manutenção de comunicação clara entre todas as partes envolvidas.
+            </div>
+        </div>
+
+        <!-- Contato -->
+        <div class="contact-modern">
+            <div class="contact-wrapper">
+                <!-- Foto -->
+                <div class="contact-photo">
+                    <img src="https://raw.githubusercontent.com/thiagochiarelotto/projeto-aidbot-imagens/main/photo_1_2025-07-25_11-06-48.jpg" alt="Foto de Thiago Chiarelotto">
+                </div>
+
+                <!-- Informações -->
+                <div class="contact-info">
+                    <p><strong>Thiago Chiarelotto</strong></p>
+                    <p>Gerente de Relacionamento e Serviços</p>
+                    <p>📧 <a href="mailto:thiago.chiarelotto@tron.com.br">thiago.chiarelotto@tron.com.br</a></p>
+                    <p>📱 (62) 98592-5065</p>
+                </div>
+
+                <!-- QR Code -->
+                <div class="contact-qr">
+                    <img src="https://raw.githubusercontent.com/thiagochiarelotto/projeto-aidbot-imagens/main/photo_2_2025-07-25_11-06-48.jpg" alt="QR Code de Contato">
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e9ecef; color: #6c757d; font-style: italic;">
+            <p>Relatório elaborado em janeiro de 2025 | Projeto Blip - Transformação digital do atendimento Tron</p>
+        </div>
+    </div>
+</body>
+</html>
