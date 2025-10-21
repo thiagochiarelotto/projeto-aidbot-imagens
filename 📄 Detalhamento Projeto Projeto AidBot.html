@@ -420,7 +420,43 @@
             }
         }
 
+        /* Barra de Progresso Minimalista */
+        .progress-container-mini {
+            width: 100%;
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
 
+        .progress-bar-mini {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width 1s ease-in-out;
+            min-width: 0%;
+        }
+
+        .progress-text-mini {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-dates {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.85em;
+            color: #6c757d;
+            font-weight: 500;
+        }
 
     </style>
 </head>
@@ -446,6 +482,20 @@
             <p><strong>Duração:</strong> 18 meses (Setembro 2024 - Fevereiro 2026)</p>
             <p><strong>Orçamento Total:</strong> R$ 986.651,78</p>
             <p><strong>Parceiros:</strong> CEIA/UFG, FUNAPE, Tron, SEBRAE, EMBRAPII</p>
+
+            <!-- Barra de Progresso Minimalista -->
+            <div style="margin-top: 20px;">
+                <p><strong>Progresso do Projeto:</strong></p>
+                <div class="progress-container-mini">
+                    <div class="progress-bar-mini" id="progressBar">
+                        <span class="progress-text-mini" id="progressText">0%</span>
+                    </div>
+                </div>
+                <div class="progress-dates">
+                    <span>Setembro/2024</span>
+                    <span>Fevereiro/2026</span>
+                </div>
+            </div>
         </div>
 
         <!-- O Problema -->
@@ -726,15 +776,60 @@
 
             <h3>Próximos Passos (2025-2026):</h3>
             <ul>
-                <li>Integração completa com o sistema TGC (Folha de Pagamento)</li>
-                <li>Expansão para outros módulos da Tron</li>
-                <li>Implementação de chatbot autônomo para clientes</li>
+                <li><strong>✅ Integração com o sistema TGC (Folha de Pagamento):</strong> Integração já realizada com módulo de rescisão da Folha de Pagamento</li>
+                <li><strong>✅ Expansão para outros módulos da Tron:</strong> Modelo já refinado com conhecimento da Escrita Fiscal e legislações fiscais pertinentes</li>
+                <li><strong>🔄 Implementação de chatbot autônomo para clientes:</strong> Atualmente em fase beta com 5 clientes gerando feedbacks:
+                    <ul style="margin-top: 10px; font-size: 0.95em;">
+                        <li>11-02992 / ORLANDO MARCOS SOUZA CAMILO | CTC Contabilidade</li>
+                        <li>11-00192 / JOANA DARKE BARROSO DA SILVA | BV CONTABILIDADE</li>
+                        <li>00-02925 / PABLO VASCONCELOS DA SILVA | ORION AUDITORIA E CONTABILIDADE</li>
+                        <li>00-02746 / METROBUS TRANSPORTE COLETIVO S/A</li>
+                        <li>00-00077 / VISELO CONSULTORIA EMPRESARIAL LTDA</li>
+                    </ul>
+                </li>
                 <li>Desenvolvimento de modelo preditivo para identificação de problemas antes que ocorram</li>
                 <blockquote class="enfase">
                     Acreditamos que há um ganho estratégico adicional: <strong>levar a resolução de problemas diretamente para o cliente dentro do sistema TGC</strong>, tornando o atendimento ainda mais proativo. Essa abordagem está sendo fortemente incentivada pelo <strong>Dr. Celso Camilo</strong> e deverá entrar em testes em breve.
                 </blockquote>
 
             </ul>
+        </div>
+
+        <!-- Preocupações e Desafios Atuais -->
+        <div class="section">
+            <h2>⚠️ Preocupações e Desafios Atuais</h2>
+
+            <h3>Alocação de Recursos Humanos</h3>
+            <p>Nesta fase crítica do projeto, identificamos uma preocupação estratégica que requer atenção imediata da alta gestão:</p>
+
+            <h4>Desafio Principal: Recursos Humanos Dedicados</h4>
+            <p>Atualmente, enfrentamos limitações quanto à disponibilidade de recursos humanos da Tron para atuação dedicada nas seguintes frentes:</p>
+            <ul>
+                <li>Integrações entre o sistema TGC e o assistente inteligente</li>
+                <li>Implementação de melhorias e aprimoramentos contínuos</li>
+                <li>Atualizações e manutenções necessárias do sistema</li>
+            </ul>
+
+            <h4>Impactos Observados</h4>
+            <p>A ausência de profissionais dedicados 100% ao projeto tem gerado:</p>
+            <ul>
+                <li><strong>Demandas represadas:</strong> Tarefas essenciais aguardando execução</li>
+                <li><strong>Priorização secundária:</strong> Atividades do projeto competindo com outras responsabilidades</li>
+                <li><strong>Perda de timing:</strong> Atrasos que comprometem o aproveitamento de oportunidades</li>
+                <li><strong>Desengajamento gradual:</strong> Dificuldade em manter o momentum e a motivação da equipe</li>
+            </ul>
+
+            <h4>Necessidade Estratégica</h4>
+            <p>Para garantir o sucesso e a continuidade do projeto conforme as expectativas estabelecidas pela própria empresa, <strong>aguardamos um posicionamento estratégico da diretoria</strong> quanto à:</p>
+            <ul>
+                <li>Alocação de recursos humanos dedicados ao projeto</li>
+                <li>Definição clara de prioridades e responsabilidades</li>
+                <li>Estabelecimento de um cronograma realista alinhado à disponibilidade da equipe</li>
+            </ul>
+
+            <blockquote>
+                <strong>Nota:</strong> O investimento em recursos humanos dedicados é fundamental para materializar todo o potencial do AidBot e assegurar o retorno esperado sobre o investimento de R$ 986.651,78 já comprometido com o projeto.
+            </blockquote>
         </div>
 
        <!-- Contato -->
@@ -764,8 +859,33 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>Relatório elaborado em julho de 2025 | Projeto AidBot - Transformando o futuro do atendimento contábil com Inteligência Artificial</p>
+            <p>Relatório elaborado em outubro de 2025 | Projeto AidBot - Transformando o futuro do atendimento contábil com Inteligência Artificial</p>
         </div>
     </div>
+
+    <script>
+        // Calcular progresso do projeto de forma minimalista
+        function calcularProgresso() {
+            const inicio = new Date('2024-09-01');
+            const fim = new Date('2026-02-28');
+            const atual = new Date();
+
+            const totalDias = (fim - inicio) / (1000 * 60 * 60 * 24);
+            const diasDecorridos = (atual - inicio) / (1000 * 60 * 60 * 24);
+
+            let porcentagem = (diasDecorridos / totalDias) * 100;
+            porcentagem = Math.max(0, Math.min(100, porcentagem));
+
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+
+            setTimeout(() => {
+                progressBar.style.width = porcentagem.toFixed(1) + '%';
+                progressText.textContent = porcentagem.toFixed(1) + '%';
+            }, 100);
+        }
+
+        window.addEventListener('load', calcularProgresso);
+    </script>
 </body>
 </html>
