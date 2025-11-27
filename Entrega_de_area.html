@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação Completa - Área de Relacionamento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #e6f2ff;
+        }
+
+        /* Layout Principal */
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #0d2847;
+            color: #fff;
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            padding: 0 24px 24px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo img {
+            max-width: 100px;
+            height: auto;
+            filter: brightness(0) invert(1) brightness(2);
+        }
+
+        .sidebar-nav {
+            padding: 16px 0;
+        }
+
+        .nav-section {
+            margin-bottom: 16px;
+        }
+
+        .nav-section-title {
+            padding: 12px 24px 8px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #60a5fa;
+            font-weight: 700;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 24px;
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: #60a5fa;
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-left-color: #60a5fa;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main {
+            overflow-y: auto;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #0d2847 100%);
+            color: #fff;
+            padding: 64px 48px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .content {
+            padding: 48px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 80px;
+            scroll-margin-top: 24px;
+        }
+
+        section h2 {
+            font-size: 2.25rem;
+            color: #0d2847;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 4px solid #1e40af;
+        }
+
+        section h3 {
+            font-size: 1.75rem;
+            color: #1e40af;
+            margin: 40px 0 20px;
+        }
+
+        section h4 {
+            font-size: 1.25rem;
+            color: #1e40af;
+            margin: 24px 0 12px;
+        }
+
+        section p {
+            margin-bottom: 16px;
+            color: #4a5568;
+            font-size: 1.05rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .card h4 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: #dbeafe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #1e40af;
+            font-weight: bold;
+        }
+
+        /* Leadership Grid */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .leader-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .leader-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #60a5fa 0%, #1e40af 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .leader-info h4 {
+            font-size: 1.1rem;
+            color: #0d2847;
+            margin: 0 0 4px;
+        }
+
+        .leader-info p {
+            font-size: 0.85rem;
+            color: #718096;
+            margin: 2px 0;
+        }
+
+        .leader-info a {
+            color: #1e40af;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        /* Organograma */
+        .organograma-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .organograma-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Documentação */
+        .doc-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin: 32px 0;
+        }
+
+        .doc-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        /* Projects Section */
+        .search-filter-container {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            color: #718096;
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: #2d3748;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .filter-box {
+            min-width: 200px;
+        }
+
+        .status-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: #2d3748;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .status-select:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .stat-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #1e40af;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d2847;
+        }
+
+        /* Project Card */
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-header {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: background 0.2s ease;
+        }
+
+        .project-header:hover {
+            background: #f7fafc;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .project-status {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-andamento {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-bloqueado {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-concluido {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .expand-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #edf2f7;
+            transition: all 0.2s ease;
+        }
+
+        .expand-btn svg {
+            width: 16px;
+            height: 16px;
+            color: #4a5568;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card.expanded .expand-btn svg {
+            transform: rotate(180deg);
+        }
+
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .project-card.expanded .project-details {
+            max-height: 3000px;
+        }
+
+        .project-content {
+            padding: 24px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: #718096;
+        }
+
+        .meta-item svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .info-card {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .info-card-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #718096;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .info-card-content {
+            font-size: 0.9rem;
+            color: #2d3748;
+        }
+
+        .info-card-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-card-content li {
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+            font-size: 0.85rem;
+        }
+
+        .info-card-content li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: #cbd5e0;
+            border-radius: 50%;
+        }
+
+        /* Sub Projects */
+        .sub-projects {
+            margin-top: 24px;
+        }
+
+        .sub-projects-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #718096;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .sub-project {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .sub-project:last-child {
+            margin-bottom: 0;
+        }
+
+        .sub-project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .sub-project-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .sub-project-status {
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 10px 12px;
+            background: #edf2f7;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4a5568;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .data-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #2d3748;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: #f7fafc;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+
+        .alert svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Flow */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 12px 0;
+        }
+
+        .flow-step {
+            padding: 8px 14px;
+            background: #edf2f7;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+        }
+
+        .flow-arrow {
+            color: #a0aec0;
+            font-size: 1.2rem;
+        }
+
+        /* Section divider */
+        .section-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 20px 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #1e40af;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Contact Section */
+        .contact-modern {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin: 48px 0 32px;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-photo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #1e40af;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info p {
+            margin: 4px 0;
+            font-size: 0.95rem;
+            color: #2d3748;
+        }
+
+        .contact-info p:first-child {
+            font-size: 1.25rem;
+            color: #0d2847;
+            margin-bottom: 8px;
+        }
+
+        .contact-info a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-qr img {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px 0;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+            }
+
+            .content {
+                padding: 32px 24px;
+            }
+
+            .hero {
+                padding: 48px 24px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .contact-photo img,
+            .contact-qr img {
+                margin: 0 auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="https://login.tron.com.br/assets/img/logo-tron-login.png" alt="Tron Logo">
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Estrutura</div>
+                    <a href="#missao" class="nav-link active">Missão da Área</a>
+                    <a href="#lideranca" class="nav-link">Liderança</a>
+                    <a href="#organograma" class="nav-link">Organograma</a>
+                    <a href="#perfis" class="nav-link">Perfis Técnicos</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Papéis - Suporte ao Produto</div>
+                    <a href="#nivel-1" class="nav-link">Nível 1</a>
+                    <a href="#nivel-2" class="nav-link">Nível 2</a>
+                    <a href="#lider-squad" class="nav-link">Líder de Squad</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Outras Áreas</div>
+                    <a href="#onboarding-papel" class="nav-link">Onboarding</a>
+                    <a href="#qualificacao-papel" class="nav-link">Qualificação</a>
+                    <a href="#customer-success-papel" class="nav-link">Customer Success</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Processos</div>
+                    <a href="#workflow" class="nav-link">Workflow</a>
+                    <a href="#scripts" class="nav-link">Scripts Padrão</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Projetos</div>
+                    <a href="#projetos" class="nav-link">Gestão de Projetos</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="hero">
+                <h1>Área de Relacionamento</h1>
+                <p>Documentação completa sobre estrutura, processos e projetos estratégicos</p>
+            </div>
+
+            <div class="content">
+                <!-- Missão -->
+                <section id="missao">
+                    <h2>Missão do Time</h2>
+                    <p>Nossa missão é <strong>cultivar e fortalecer os laços entre a empresa e nossos clientes</strong>, buscando garantir a satisfação, fidelização e retenção dos clientes.</p>
+
+                    <p>Isso envolve fornecer um <strong>ótimo atendimento</strong>, resolver problemas de forma eficiente e garantir uma experiência positiva em todos os pontos de contato. O objetivo é construir relações duradouras e mutuamente benéficas que promovam o sucesso tanto da empresa quanto dos clientes.</p>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">🎯</div>
+                                Propósito
+                            </h4>
+                            <p>Cordialidade para encantar, empatia para entender e eficiência para resolver.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">👥</div>
+                                Liderança
+                            </h4>
+                            <p>O time foi liderado por Thiago Chiarelotto até Dezembro/2025, cuja missão foi orientar e apoiar as demais áreas.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Liderança -->
+                <section id="lideranca">
+                    <h2>Liderança</h2>
+
+                    <div class="leadership-grid">
+                        <div class="leader-card">
+                            <div class="leader-avatar">TC</div>
+                            <div class="leader-info">
+                                <h4>Thiago Chiarelotto</h4>
+                                <p>Gerente de Relacionamento e Serviços</p>
+                                <a href="mailto:thiago.chiarelotto@gmail.com">thiago.chiarelotto@gmail.com</a>
+                                <p>(62) 98592-5065</p>
+                            </div>
+                        </div>
+
+                        <div class="leader-card">
+                            <div class="leader-avatar">AC</div>
+                            <div class="leader-info">
+                                <h4>Ana Cledyna Barroso</h4>
+                                <p>Coordenadora de Relacionamento e CS</p>
+                                <a href="mailto:cledyna@tron.com.br">cledyna@tron.com.br</a>
+                                <p>(62) 98592-5074</p>
+                            </div>
+                        </div>
+
+                        <div class="leader-card">
+                            <div class="leader-avatar">RS</div>
+                            <div class="leader-info">
+                                <h4>Rodrigo Santana</h4>
+                                <p>Coordenador de Suporte</p>
+                                <a href="mailto:rodrigo.santana@tron.com.br">rodrigo.santana@tron.com.br</a>
+                                <p>(62) 98252-1284</p>
+                            </div>
+                        </div>
+
+                        <div class="leader-card">
+                            <div class="leader-avatar">EF</div>
+                            <div class="leader-info">
+                                <h4>Eurilaine Fernandes</h4>
+                                <p>Coordenadora de Qualificação</p>
+                                <a href="mailto:eurilaine.oliveira@tron.com.br">eurilaine.oliveira@tron.com.br</a>
+                                <p>(62) 9855-9832</p>
+                            </div>
+                        </div>
+
+                        <div class="leader-card">
+                            <div class="leader-avatar">CB</div>
+                            <div class="leader-info">
+                                <h4>Caroline Belohuby</h4>
+                                <p>Coordenadora de Implantação</p>
+                                <a href="mailto:caroline.belohuby@tron.com.br">caroline.belohuby@tron.com.br</a>
+                                <p>(62) 98400-7748</p>
+                            </div>
+                        </div>
+
+                        <div class="leader-card">
+                            <div class="leader-avatar">MF</div>
+                            <div class="leader-info">
+                                <h4>Moisés Fernandes</h4>
+                                <p>Coordenador Suporte Avançado</p>
+                                <a href="mailto:moises.fernandes@tron.com.br">moises.fernandes@tron.com.br</a>
+                                <p>(62) 98592-5086</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organograma -->
+                <section id="organograma">
+                    <h2>Estrutura Organizacional</h2>
+
+                    <div class="organograma-container">
+                        <img src="https://raw.githubusercontent.com/thiagochiarelotto/projeto-aidbot-imagens/main/Organograma.png" alt="Organograma da Área de Relacionamento">
+                    </div>
+                </section>
+
+                <!-- Perfis Técnicos -->
+                <section id="perfis">
+                    <h2>Perfis Técnicos</h2>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">1️⃣</div>
+                                Técnico Júnior
+                            </h4>
+                            <p>Executa funções de menor complexidade e tem menos autonomia para tomar decisões. Por estar em início de carreira, não se exige desse profissional tantas competências técnicas.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">2️⃣</div>
+                                Técnico Pleno
+                            </h4>
+                            <p>Profissional com mais tempo no mercado que executa tarefas de maior complexidade. Demonstra maior maturidade profissional e seu poder de decisão é intermediário.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">3️⃣</div>
+                                Técnico Sênior
+                            </h4>
+                            <p>Demonstra boa capacidade de executar tarefas complexas, planejamento e liderança. Exige-se nível maior de maturidade técnica e emocional, além de ser um bom tomador de decisões.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Nível 1 -->
+                <section id="nivel-1">
+                    <h2>Funções do Analista Nível 1 - Suporte ao Produto</h2>
+                    <p><strong>Squads:</strong> Squad Pessoal, Squad Fisco, Squad Cloud/Acesso</p>
+
+                    <div class="card">
+                        <h4>
+                            <div class="card-icon">📞</div>
+                            Atribuições Principais
+                        </h4>
+                        <ul>
+                            <li>Atender clientes via chat, telefone ou e-mail de forma clara, cordial e objetiva</li>
+                            <li>Categorizar tickets corretamente no Movidesk, mantendo histórico atualizado</li>
+                            <li>Executar procedimentos padronizados seguindo manuais e base de conhecimento</li>
+                            <li>Escalonar demandas para N2 quando necessário</li>
+                            <li>Monitorar tickets garantindo atualização de status dentro do SLA</li>
+                            <li>Auxiliar na triagem de incidentes recorrentes</li>
+                            <li>Aplicar scripts e protocolos de atendimento</li>
+                            <li>Manter postura empática e profissional</li>
+                            <li>Buscar desenvolvimento contínuo para apoiar a squad</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Nível 2 -->
+                <section id="nivel-2">
+                    <h2>Funções do Analista Nível 2 - Suporte ao Produto</h2>
+                    <p><strong>Squads:</strong> Squad Pessoal, Squad Fisco, Squad Cloud/Acesso</p>
+
+                    <div class="card">
+                        <h4>
+                            <div class="card-icon">🔧</div>
+                            Atribuições Principais
+                        </h4>
+                        <ul>
+                            <li>Analisar tickets do N1 (dúvida, problema ou sugestão)</li>
+                            <li>Apoio e suporte ao N1 e terceiros</li>
+                            <li>Analisar demandas complexas ou problemas sistêmicos</li>
+                            <li>Contato com clientes estratégicos</li>
+                            <li>Alinhamento com líderes de squad</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Líder de Squad -->
+                <section id="lider-squad">
+                    <h2>Funções do Líder de Squad - Suporte ao Produto</h2>
+                    <p><strong>Squads:</strong> Squad Pessoal, Squad Fisco, Squad Cloud/Acesso</p>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">📋</div>
+                                Gestão Operacional
+                            </h4>
+                            <ul>
+                                <li>Direcionar prioridades da squad</li>
+                                <li>Gestão da fila de tickets</li>
+                                <li>Garantir execução da estratégia</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">📈</div>
+                                KPIs e Qualidade
+                            </h4>
+                            <ul>
+                                <li>Acompanhar KPIs e SLA</li>
+                                <li>Fornecer feedback técnico</li>
+                                <li>Monitorar qualidade de atendimento</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">🎓</div>
+                                Liderança
+                            </h4>
+                            <ul>
+                                <li>Atender clientes estratégicos</li>
+                                <li>Apoio técnico à squad</li>
+                                <li>Direcionamento de boas práticas</li>
+                                <li>Desenvolvimento da equipe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Onboarding -->
+                <section id="onboarding-papel">
+                    <h2>Funções da Área de Onboarding</h2>
+
+                    <div class="card">
+                        <h4>
+                            <div class="card-icon">🎓</div>
+                            Atribuições Principais
+                        </h4>
+                        <ul>
+                            <li>Conduzir o processo de integração de novos clientes</li>
+                            <li>Realizar treinamentos iniciais sobre os produtos</li>
+                            <li>Acompanhar a jornada de ativação do cliente</li>
+                            <li>Garantir a correta configuração inicial dos sistemas</li>
+                            <li>Desenvolver e atualizar materiais de onboarding</li>
+                            <li>Mapear e otimizar a experiência do cliente na fase inicial</li>
+                            <li>Realizar follow-up pós-implementação</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Qualificação -->
+                <section id="qualificacao-papel">
+                    <h2>Funções da Área de Qualificação</h2>
+
+                    <div class="card">
+                        <h4>
+                            <div class="card-icon">📚</div>
+                            Atribuições Principais
+                        </h4>
+                        <ul>
+                            <li>Desenvolver conteúdos educacionais e treinamentos</li>
+                            <li>Realizar webinars e lives para clientes</li>
+                            <li>Criar e manter base de conhecimento atualizada</li>
+                            <li>Produzir materiais de apoio (manuais, vídeos, tutoriais)</li>
+                            <li>Capacitar clientes em funcionalidades avançadas</li>
+                            <li>Acompanhar evolução de conhecimento dos usuários</li>
+                            <li>Definir calendário de gravações e eventos</li>
+                            <li>Estabelecer métricas de qualificação e engajamento</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Customer Success -->
+                <section id="customer-success-papel">
+                    <h2>Funções da Área de Customer Success</h2>
+
+                    <div class="card">
+                        <h4>
+                            <div class="card-icon">🤝</div>
+                            Atribuições Principais
+                        </h4>
+                        <ul>
+                            <li>Acompanhar proativamente a saúde dos clientes</li>
+                            <li>Gerenciar relacionamento com clientes estratégicos</li>
+                            <li>Atuar na retenção e redução de churn</li>
+                            <li>Conduzir processos de cancelamento quando necessário</li>
+                            <li>Identificar oportunidades de upsell e cross-sell</li>
+                            <li>Monitorar indicadores de satisfação e uso</li>
+                            <li>Mediar conflitos e resolver reclamações complexas</li>
+                            <li>Desenvolver estratégias de engajamento contínuo</li>
+                            <li>Coletar feedback para melhorias de produto</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Workflow e Documentação -->
+                <section id="workflow">
+                    <h2>Workflow e Documentação</h2>
+
+                    <div class="doc-container">
+                        <h3>Fluxo de Trabalho Padronizado</h3>
+                        <p>O workflow abaixo ilustra o fluxo padrão de atendimento, escalação e resolução de demandas na área de relacionamento:</p>
+
+                        <img src="https://raw.githubusercontent.com/thiagochiarelotto/projeto-aidbot-imagens/main/Documeta%C3%A7%C3%A3o.png" alt="Documentação de Workflow">
+                    </div>
+                </section>
+
+                <!-- Scripts Padrão -->
+                <section id="scripts">
+                    <h2>Scripts Padronizados de Atendimento</h2>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">👋</div>
+                                Abertura de Atendimento
+                            </h4>
+                            <p style="background: #f7fafc; padding: 16px; border-radius: 8px; font-size: 0.9rem;">
+                                "Olá, [Nome do Cliente]! Meu nome é [Seu Nome], do suporte Tron. Como posso ajudá-lo(a) hoje?"
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">🔍</div>
+                                Levantamento de Informações
+                            </h4>
+                            <p style="background: #f7fafc; padding: 16px; border-radius: 8px; font-size: 0.9rem;">
+                                "Para que eu possa auxiliá-lo(a) da melhor forma, poderia me informar: [detalhes necessários]?"
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">⏱️</div>
+                                Solicitação de Tempo
+                            </h4>
+                            <p style="background: #f7fafc; padding: 16px; border-radius: 8px; font-size: 0.9rem;">
+                                "Vou verificar essa informação para você. Poderia aguardar um momento, por favor?"
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">📤</div>
+                                Escalação para N2
+                            </h4>
+                            <p style="background: #f7fafc; padding: 16px; border-radius: 8px; font-size: 0.9rem;">
+                                "Vou encaminhar sua solicitação para nossa equipe especializada. Você receberá retorno em até [prazo SLA]."
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">✅</div>
+                                Finalização
+                            </h4>
+                            <p style="background: #f7fafc; padding: 16px; border-radius: 8px; font-size: 0.9rem;">
+                                "Consegui resolver sua questão? Há algo mais em que eu possa ajudá-lo(a)?"
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <h4>
+                                <div class="card-icon">👋</div>
+                                Encerramento
+                            </h4>
+                            <p style="background: #f7fafc; padding: 16px; border-radius: 8px; font-size: 0.9rem;">
+                                "Agradeço pelo contato! Estamos sempre à disposição. Tenha um ótimo dia!"
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gestão de Projetos -->
+                <section id="projetos">
+                    <h2>Gestão de Projetos Estratégicos</h2>
+
+                    <div class="project-stats">
+                        <div class="stat-card">
+                            <div class="stat-label">Total de Projetos</div>
+                            <div class="stat-value" id="total-projects">8</div>
+                        </div>
+                        <div class="stat-card" style="border-left-color: #1e40af;">
+                            <div class="stat-label">Em Andamento</div>
+                            <div class="stat-value" id="andamento-count">4</div>
+                        </div>
+                        <div class="stat-card" style="border-left-color: #dc2626;">
+                            <div class="stat-label">Bloqueado</div>
+                            <div class="stat-value" id="bloqueado-count">2</div>
+                        </div>
+                        <div class="stat-card" style="border-left-color: #059669;">
+                            <div class="stat-label">Concluído</div>
+                            <div class="stat-value" id="concluido-count">2</div>
+                        </div>
+                    </div>
+
+                    <div class="search-filter-container">
+                        <div class="search-box">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                            <input type="text" id="searchInput" class="search-input" placeholder="Buscar projetos...">
+                        </div>
+                        <div class="filter-box">
+                            <select id="statusFilter" class="status-select">
+                                <option value="">Todos os Status</option>
+                                <option value="andamento">Em Andamento</option>
+                                <option value="bloqueado">Bloqueado</option>
+                                <option value="concluido">Concluído</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- PROJETO CEIA -->
+                    <div class="project-card" data-status="andamento" id="ceia">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-title-area">
+                                <div class="project-title">
+                                    PROJETO CEIA (AidBot)
+                                    <span class="project-status status-andamento">Em Andamento</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Dependente de recursos Tron
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-content">
+                                <div class="info-grid">
+                                    <div class="info-card">
+                                        <div class="info-card-title">Status Atual</div>
+                                        <div class="info-card-content">
+                                            Em andamento com limitações de recursos
+                                        </div>
+                                    </div>
+                                    <div class="info-card">
+                                        <div class="info-card-title">Equipe</div>
+                                        <div class="info-card-content">
+                                            Dependente de recursos Tron
+                                        </div>
+                                    </div>
+                                    <div class="info-card">
+                                        <div class="info-card-title">Desafios</div>
+                                        <div class="info-card-content">
+                                            <ul>
+                                                <li>Integrações TGC × Assistente inteligente</li>
+                                                <li>Melhorias e aprimoramentos contínuos</li>
+                                                <li>Atualizações e manutenções</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://htmlpreview.github.io/?https://github.com/thiagochiarelotto/projeto-aidbot-imagens/blob/main/%F0%9F%93%84%20Detalhamento%20Projeto%20Projeto%20AidBot.html" class="btn btn-primary" target="_blank" style="margin-top: 16px; background: #1e40af; color: #fff; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-size: 0.85rem;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                    Ver Documentação Completa
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COMUNICAÇÃO WHATSAPP -->
+                    <div class="project-card" data-status="andamento" id="whatsapp">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-title-area">
+                                <div class="project-title">
+                                    Comunicação WhatsApp Integrada
+                                    <span class="project-status status-andamento">Em Andamento</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                        </svg>
+                                        2 sub-projetos
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-content">
+                                <div class="sub-projects">
+                                    <div class="sub-projects-title">Sub-projetos</div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">Blip - Envio Automático de Boletos</span>
+                                            <span class="sub-project-status" style="background: #dbeafe; color: #1e40af;">Em Andamento</span>
+                                        </div>
+                                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 16px;">
+                                            Notificar clientes sobre bloqueio do sistema nos próximos 3 dias via WhatsApp
+                                        </p>
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Responsável</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>João Victor</td>
+                                                    <td>✅ Template criado e aprovado pela Meta (Facebook) - Teste interno validado</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tiago Souza</td>
+                                                    <td>🔄 Implementando rotina de disparo dentro do T.T.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="alert alert-info">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                            </svg>
+                                            Template aprovado - Em fase de implementação técnica
+                                        </div>
+                                    </div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">Grupos WhatsApp (DataMaster)</span>
+                                            <span class="sub-project-status" style="background: #d1fae5; color: #065f46;">Operacional</span>
+                                        </div>
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Equipe</th>
+                                                    <th>Responsabilidade</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Qualificação</td>
+                                                    <td>Divulgação de conteúdos e lives</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Marketing</td>
+                                                    <td>Comunicados e campanhas</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Customer Success</td>
+                                                    <td>Gestão de reclamações e relacionamento com clientes</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJETO KAIROS -->
+                    <div class="project-card" data-status="andamento" id="kairos">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-title-area">
+                                <div class="project-title">
+                                    Projeto Kairos
+                                    <span class="project-status status-andamento">Em Andamento</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                            <polyline points="22 4 12 14.01 9 11.01"/>
+                                        </svg>
+                                        3 sub-projetos ativos
+                                    </div>
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Rodrigo Santana (Coord.)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-content">
+                                <div class="sub-projects">
+                                    <div class="sub-projects-title">Sub-projetos</div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">SLA</span>
+                                            <span class="sub-project-status" style="background: #d1fae5; color: #065f46;">Operacional</span>
+                                        </div>
+                                        <div class="info-grid" style="margin-bottom: 0;">
+                                            <div class="info-card" style="background: #fff;">
+                                                <div class="info-card-title">Status</div>
+                                                <div class="info-card-content">Configurado e ativo</div>
+                                            </div>
+                                            <div class="info-card" style="background: #fff;">
+                                                <div class="info-card-title">Responsável</div>
+                                                <div class="info-card-content">Rodrigo Santana (Coordenador de Suporte)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">Customer Success</span>
+                                            <span class="sub-project-status" style="background: #fef3c7; color: #92400e;">Alerta</span>
+                                        </div>
+                                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 12px;">
+                                            <strong>Coordenadora:</strong> Ana Cledyna
+                                        </p>
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nome</th>
+                                                    <th>Função</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Francisca</td>
+                                                    <td>Retenção e cancelamento</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pedro</td>
+                                                    <td>Atuação técnica - Departamento Pessoal</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alexssandro</td>
+                                                    <td>Atuação técnica - Departamento Fiscal</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kayla</td>
+                                                    <td>Atuação proativa e monitoramento</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Vaga Aberta</strong></td>
+                                                    <td>Atuação proativa e monitoramento (Reposição Richard - desligado)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="alert alert-warning">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                            </svg>
+                                            Desafios: estruturação da equipe, definição de processos, artefatos e ferramentas
+                                        </div>
+                                    </div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">Reestruturação Suporte Squads</span>
+                                            <span class="sub-project-status" style="background: #d1fae5; color: #065f46;">Operacional</span>
+                                        </div>
+                                        <div class="info-grid" style="margin-bottom: 0;">
+                                            <div class="info-card" style="background: #fff;">
+                                                <div class="info-card-title">Responsável</div>
+                                                <div class="info-card-content">Rodrigo Santana</div>
+                                            </div>
+                                            <div class="info-card" style="background: #fff;">
+                                                <div class="info-card-title">Squads Ativos</div>
+                                                <div class="info-card-content">
+                                                    <ul>
+                                                        <li>Departamento Pessoal</li>
+                                                        <li>Departamento Fiscal (Fiscal + Contábil)</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AUTOMAÇÃO DE PROCESSOS -->
+                    <div class="project-card" data-status="andamento" id="automacao">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-title-area">
+                                <div class="project-title">
+                                    Automação de Processos
+                                    <span class="project-status status-andamento">Em Andamento</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="16 18 22 12 16 6"/>
+                                            <polyline points="8 6 2 12 8 18"/>
+                                        </svg>
+                                        4 automações
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-content">
+                                <div class="sub-projects">
+                                    <div class="sub-projects-title">Automações</div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">Automação Processos Compras</span>
+                                            <span class="sub-project-status" style="background: #dbeafe; color: #1e40af;">Em Andamento</span>
+                                        </div>
+                                        <div class="info-grid" style="margin-bottom: 0;">
+                                            <div class="info-card" style="background: #fff;">
+                                                <div class="info-card-title">Previsão</div>
+                                                <div class="info-card-content"><strong>24/11/2025</strong></div>
+                                            </div>
+                                            <div class="info-card" style="background: #fff;">
+                                                <div class="info-card-title">Plataforma</div>
+                                                <div class="info-card-content">Movidesk (modelo CPD)</div>
+                                            </div>
+                                            <div class="info-card" style="background: #fff;">
+                                                <div class="info-card-title">Funcionalidades</div>
+                                                <div class="info-card-content">
+                                                    <ul>
+                                                        <li>Disparo automático de e-mails</li>
+                                                        <li>Controle Kanban</li>
+                                                        <li>Controle de SLA</li>
+                                                        <li>Gestão centralizada</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">Clientes Segunda Competência Vencida</span>
+                                            <span class="sub-project-status" style="background: #d1fae5; color: #065f46;">Operacional</span>
+                                        </div>
+                                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 12px;">
+                                            <strong>Periodicidade:</strong> Todas as segundas-feiras
+                                        </p>
+                                        <div class="info-card-title" style="margin-bottom: 8px;">Fluxo de Trabalho</div>
+                                        <div class="flow-container">
+                                            <div class="flow-step">Verificação Automática</div>
+                                            <span class="flow-arrow">→</span>
+                                            <div class="flow-step">Ticket Movidesk</div>
+                                            <span class="flow-arrow">→</span>
+                                            <div class="flow-step">Tratamento Financeira</div>
+                                            <span class="flow-arrow">→</span>
+                                            <div class="flow-step">CS (&lt; 1 ano)</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">Indicadores por IA (Fila de Atendimento)</span>
+                                            <span class="sub-project-status" style="background: #d1fae5; color: #065f46;">Operacional</span>
+                                        </div>
+                                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 12px;">
+                                            <strong>Periodicidade:</strong> Diariamente às 7h
+                                        </p>
+                                        <div class="info-card" style="background: #fff;">
+                                            <div class="info-card-title">Informações Geradas</div>
+                                            <div class="info-card-content">
+                                                <ul>
+                                                    <li>Resumo da operação do dia</li>
+                                                    <li>Tendência de crescimento/queda da fila</li>
+                                                    <li>Clientes aguardando na fila</li>
+                                                    <li>Tickets aguardando há muito tempo</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sub-project">
+                                        <div class="sub-project-header">
+                                            <span class="sub-project-title">API Rastreamento de Uso de Aplicações</span>
+                                            <span class="sub-project-status" style="background: #dbeafe; color: #1e40af;">Em Andamento</span>
+                                        </div>
+                                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 12px;">
+                                            <strong>Tarefa:</strong> Redmine Melhoria #134608
+                                        </p>
+                                        <div class="info-card" style="background: #fff;">
+                                            <div class="info-card-title">Objetivo Futuro</div>
+                                            <div class="info-card-content">
+                                                <ul>
+                                                    <li>Popular banco de dados para BI</li>
+                                                    <li>Integração com CustomerX</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 48px;">Projetos Bloqueados</h3>
+
+                    <!-- PROJETO PAIH -->
+                    <div class="project-card" data-status="bloqueado" id="paih">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-title-area">
+                                <div class="project-title">
+                                    PROJETO PAIH
+                                    <span class="project-status status-bloqueado">Bloqueado</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Equipe em formação
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-content">
+                                <div class="info-grid">
+                                    <div class="info-card">
+                                        <div class="info-card-title">Foco Atual</div>
+                                        <div class="info-card-content">
+                                            Recrutamento e contratações
+                                        </div>
+                                    </div>
+                                    <div class="info-card">
+                                        <div class="info-card-title">Equipe</div>
+                                        <div class="info-card-content">
+                                            Em formação
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ONBOARDING -->
+                    <div class="project-card" data-status="bloqueado" id="onboarding">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-title-area">
+                                <div class="project-title">
+                                    Onboarding
+                                    <span class="project-status status-bloqueado">Bloqueado</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                            <line x1="16" y1="13" x2="8" y2="13"/>
+                                            <line x1="16" y1="17" x2="8" y2="17"/>
+                                            <polyline points="10 9 9 9 8 9"/>
+                                        </svg>
+                                        Definição de etapas
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-content">
+                                <div class="info-grid">
+                                    <div class="info-card">
+                                        <div class="info-card-title">Foco Atual</div>
+                                        <div class="info-card-content">
+                                            <ul>
+                                                <li>Definição de etapas</li>
+                                                <li>Mapeamento de jornadas</li>
+                                                <li>Segmentação de públicos</li>
+                                                <li>Desenvolvimento de artefatos</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 48px;">Projetos Concluídos</h3>
+
+                    <!-- CLOUD -->
+                    <div class="project-card" data-status="concluido" id="cloud">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-title-area">
+                                <div class="project-title">
+                                    Cloud
+                                    <span class="project-status status-concluido">Concluído</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        4 membros
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-content">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Função</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Victor Zanoni</td>
+                                            <td>Membro da equipe</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lucas Francisco</td>
+                                            <td>Promovido da Qualificação</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Samuel Couto</td>
+                                            <td>Membro da equipe</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rodrigo</td>
+                                            <td>Apoio e direcionamento da Squad</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUALIFICAÇÃO -->
+                    <div class="project-card" data-status="concluido" id="qualificacao">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-title-area">
+                                <div class="project-title">
+                                    Qualificação
+                                    <span class="project-status status-concluido">Concluído</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Líder: Eurilaine
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-content">
+                                <div class="info-grid">
+                                    <div class="info-card">
+                                        <div class="info-card-title">Líder</div>
+                                        <div class="info-card-content">Eurilaine</div>
+                                    </div>
+                                    <div class="info-card">
+                                        <div class="info-card-title">Desafios</div>
+                                        <div class="info-card-content">
+                                            <ul>
+                                                <li>Estruturar e revisar processos</li>
+                                                <li>Definir papéis e responsabilidades</li>
+                                                <li>Criar calendário de gravações</li>
+                                                <li>Estabelecer métricas da área</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="section-divider"></div>
+                                <div class="info-card-title" style="margin-bottom: 12px;">Novas Contratações</div>
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Localização</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Fabiano</td>
+                                            <td>Recife-PE</td>
+                                            <td><span style="background: #d1fae5; color: #065f46; padding: 2px 8px; border-radius: 3px; font-size: 0.75rem;">Nova contratação</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sâmela</td>
+                                            <td>Pires do Rio-GO</td>
+                                            <td><span style="background: #d1fae5; color: #065f46; padding: 2px 8px; border-radius: 3px; font-size: 0.75rem;">Nova contratação</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contato -->
+                <div class="contact-modern">
+                    <div class="contact-wrapper">
+                        <!-- Foto -->
+                        <div class="contact-photo">
+                            <img src="https://raw.githubusercontent.com/thiagochiarelotto/projeto-aidbot-imagens/main/photo_1_2025-07-25_11-06-48.jpg" alt="Foto de Thiago Chiarelotto">
+                        </div>
+
+                        <!-- Informações -->
+                        <div class="contact-info">
+                            <p><strong>Thiago Chiarelotto</strong></p>
+                            <p>Gerente de Relacionamento e Serviços</p>
+                            <p>📧 <a href="mailto:thiago.chiarelotto@gmail.com">thiago.chiarelotto@gmail.com</a></p>
+                            <p>📱 (62) 98592-5065</p>
+                        </div>
+
+                        <!-- QR Code -->
+                        <div class="contact-qr">
+                            <img src="https://raw.githubusercontent.com/thiagochiarelotto/projeto-aidbot-imagens/main/photo_2_2025-07-25_11-06-48.jpg" alt="QR Code de Contato">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer">
+                    <p>Relatório elaborado em Dezembro de 2025 | Plano de Saída</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    // Update active nav
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active section on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Project toggle
+        function toggleProject(header) {
+            const projectCard = header.parentElement;
+            projectCard.classList.toggle('expanded');
+        }
+
+        // Project filter
+        const searchInput = document.getElementById('searchInput');
+        const statusFilter = document.getElementById('statusFilter');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        function filterProjects() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedStatus = statusFilter.value;
+
+            projectCards.forEach(card => {
+                const title = card.querySelector('.project-title').textContent.toLowerCase();
+                const status = card.getAttribute('data-status');
+
+                const matchesSearch = searchTerm === '' || title.includes(searchTerm);
+                const matchesStatus = selectedStatus === '' || status === selectedStatus;
+
+                if (matchesSearch && matchesStatus) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterProjects);
+        statusFilter.addEventListener('change', filterProjects);
+
+        // Update statistics
+        function updateStatistics() {
+            const statusCounts = {
+                andamento: 0,
+                bloqueado: 0,
+                concluido: 0
+            };
+
+            projectCards.forEach(card => {
+                const status = card.getAttribute('data-status');
+                if (statusCounts.hasOwnProperty(status)) {
+                    statusCounts[status]++;
+                }
+            });
+
+            document.getElementById('andamento-count').textContent = statusCounts.andamento;
+            document.getElementById('bloqueado-count').textContent = statusCounts.bloqueado;
+            document.getElementById('concluido-count').textContent = statusCounts.concluido;
+        }
+
+        // Initialize
+        updateStatistics();
+    </script>
+</body>
+</html>
